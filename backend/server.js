@@ -64,7 +64,7 @@ app.get('/recipes', apiLimiter, async(req,res)=>{
         if (!response.ok || !Array.isArray(data)) {
             console.error('Spoonacular error:', data)
             return res.status(502).json({
-                error: "Kooky's recipe search hit its daily limit 🍳 — please check back tomorrow, or try again in a bit."
+                error: "Kooky's recipe search hit its daily limit. Please check back tomorrow, or try again in a bit."
             })
         }
 
