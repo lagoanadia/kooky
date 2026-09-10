@@ -26,7 +26,7 @@ body {
 .header {
   display: flex;
   align-items: center;
-  padding: 24px 32px;
+  padding: clamp(16px, 5vw, 24px) clamp(16px, 5vw, 32px);
   width: 100%;
   max-width: 600px;
 }
@@ -37,19 +37,19 @@ body {
 }
 
 .card {
-  width: 600px;
-  height: 600px;
+  width: 100%;
+  max-width: 600px;
   background-color: var(--olive);
   border-radius: 24px;
-  padding: 32px 36px;
+  padding: clamp(20px, 6vw, 32px) clamp(20px, 6vw, 36px);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .plate1 {
-  width: 260px;
-  height: 260px;
+  width: clamp(180px, 60vw, 260px);
+  height: clamp(180px, 60vw, 260px);
   background-color: var(--darker-beige);
   border-radius: 50%;
   display: flex;
@@ -58,8 +58,8 @@ body {
 }
 
 .plate2 {
-  width: 220px;
-  height: 220px;
+  width: clamp(150px, 51vw, 220px);
+  height: clamp(150px, 51vw, 220px);
   background-color: var(--beige);
   border-radius: 50%;
   display: flex;
@@ -68,8 +68,8 @@ body {
 }
 
 .plate3 {
-  width: 190px;
-  height: 190px;
+  width: clamp(125px, 44vw, 190px);
+  height: clamp(125px, 44vw, 190px);
   background-color: white;
   border-radius: 50%;
   display: flex;
@@ -81,9 +81,10 @@ body {
 
 .plate3 p {
   font-family: 'Vidaloka', serif;
-  font-size: 26px;
+  font-size: clamp(18px, 6vw, 26px);
   color: #1a1a1a;
   margin: 0;
+  padding: 0 8px;
 }
 
 .searchbar-container {
@@ -146,7 +147,6 @@ body {
   font-size: 14px;
   cursor: pointer;
   color: #1a1a1a;
-  margin-left: 20px;
 }
 
 .suggestion:hover {
@@ -157,8 +157,10 @@ body {
   align-items: center;
   justify-content: center;
   gap: 16px;
-  width: 600px;
- margin-bottom: 70px;
+  width: 100%;
+  max-width: 600px;
+  padding: 0 16px;
+  margin-bottom: 70px;
 }
 
 .recipe-card {
