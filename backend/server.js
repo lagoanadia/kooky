@@ -55,8 +55,19 @@ app.get('/recipes', apiLimiter, async(req,res)=>{
         return res.status(400).json({error: 'No ingredients provided'})
     }
     try{
-        const response = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&number=5&apiKey=${process.env.SPOONACULAR_API_KEY}`)
+        const response = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodeURIComponent(ingredients)}&number=5&apiKey=${process.env.SPOONACULAR_API_KEY}`)
         const data = await response.json()
+
+        // Spoonacular returns HTTP 200 with an error-shaped body (e.g. quota
+        // exceeded) instead of a real HTTP error status, so check the shape
+        // of the data itself, not just response.ok.
+        if (!response.ok || !Array.isArray(data)) {
+            console.error('Spoonacular error:', data)
+            return res.status(502).json({
+                error: 'Recipe search is temporarily unavailable. Please try again later.'
+            })
+        }
+
         res.json(data)
     }
     catch(error){
