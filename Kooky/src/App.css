@@ -120,6 +120,19 @@ body {
   font-size: 14px;
   cursor: pointer;
   flex-shrink: 0;
+  transition: transform 0.1s ease, filter 0.1s ease, background-color 0.15s ease;
+}
+
+.kook:active {
+  transform: scale(0.95);
+  filter: brightness(0.85);
+}
+
+.kook:disabled {
+  background-color: var(--darker-beige);
+  color: #6b6b6b;
+  cursor: default;
+  transform: none;
 }
 
 .Pillcontainer {
@@ -190,7 +203,7 @@ body {
 }
 
 .tips-button {
- 
+
   color: #010101;
   border: none;
 
@@ -202,6 +215,17 @@ body {
   white-space: nowrap;
   width: 160px;
   min-width: 160px;
+  transition: transform 0.1s ease, filter 0.1s ease;
+}
+
+.tips-button:active {
+  transform: scale(0.95);
+  filter: brightness(0.9);
+}
+
+.tips-button:disabled {
+  cursor: default;
+  transform: none;
 }
 
 

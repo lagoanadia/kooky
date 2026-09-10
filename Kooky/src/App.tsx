@@ -10,6 +10,7 @@ function App() {
   const [ingredients, setIngredients] = useState<string>('')
   const [recipes, setRecipes] = useState<any[]>([])
   const [searchError, setSearchError] = useState<string>('')
+  const [isSearching, setIsSearching] = useState<boolean>(false)
 
   const handleSearch = async () => {
     const trimmed = ingredients.trim()
@@ -19,6 +20,8 @@ function App() {
       return
     }
 
+    setIsSearching(true)
+    setSearchError('')
     try {
       const response = await fetch(`${API_BASE_URL}/recipes?ingredients=${encodeURIComponent(trimmed)}`);
       const data = await response.json();
@@ -29,12 +32,13 @@ function App() {
         return
       }
 
-      setSearchError('')
       setRecipes(data);
     } catch (error) {
       console.error('Error fetching recipes:', error);
       setSearchError('Could not reach the server. Please try again.')
       setRecipes([])
+    } finally {
+      setIsSearching(false)
     }
   }
 
@@ -44,7 +48,7 @@ function App() {
       <Logo />
       <SocialLinks />
     </div>
-    <SearchCard ingredients={ingredients} setIngredients={setIngredients} handleSearch={handleSearch} />
+    <SearchCard ingredients={ingredients} setIngredients={setIngredients} handleSearch={handleSearch} isSearching={isSearching} />
     {searchError && <p className="search-error">{searchError}</p>}
     <RecipeList recipes={recipes} />
     </>
