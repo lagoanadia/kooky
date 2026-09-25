@@ -1,0 +1,12 @@
+{
+    "name": "Kook Don't let your ingredients go to waste!",
+    "short_name": "Kook",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#5c6b3a",
+    "theme_color": "#5c6b3a",
+    "icons": [{"src":"192.png","sizes":"192x192","type":"image/png"},{"src":"512.png","sizes":"512x512","type":"image/png"}],
+    "id":"/",
+    "description":"Find recipes with the ingredients you already have."
+}
